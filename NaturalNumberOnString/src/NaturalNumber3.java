@@ -14,7 +14,7 @@ import components.naturalnumber.NaturalNumberSecondary;
  *         else the decimal number whose ordinary depiction is $this.rep]
  * </pre>
  *
- * @author Put your name here
+ * @author Nicholas McCracken and Jack Mikesell
  *
  */
 public class NaturalNumber3 extends NaturalNumberSecondary {
@@ -32,9 +32,7 @@ public class NaturalNumber3 extends NaturalNumberSecondary {
      * Creator of initial representation.
      */
     private void createNewRep() {
-
-        // TODO - fill in body
-
+        this.rep = "";
     }
 
     /*
@@ -45,9 +43,7 @@ public class NaturalNumber3 extends NaturalNumberSecondary {
      * No-argument constructor.
      */
     public NaturalNumber3() {
-
-        // TODO - fill in body
-
+        this.createNewRep();
     }
 
     /**
