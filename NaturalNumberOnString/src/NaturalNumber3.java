@@ -130,26 +130,38 @@ public class NaturalNumber3 extends NaturalNumberSecondary {
         assert 0 <= k : "Violation of: 0 <= k";
         assert k < RADIX : "Violation of: k < 10";
 
-        // TODO - fill in body
+        // add the given integer to the end of the natural number
+        this.rep = this.rep.concat(Integer.toString(k));
 
     }
 
     @Override
     public final int divideBy10() {
 
-        // TODO - fill in body
+        // make character to return at the end
+        char c = '0';
 
-        // This line added just to make the component compilable.
-        return 0;
+        // if the rep is only one digit, get that digit and take it out of rep
+        if (this.rep.length() == 1) {
+            c = this.rep.charAt(0);
+            this.rep = "";
+
+            /*
+             * If rep has multiple digits, make rep a substring of all but the
+             * last digit, and make c the last digit.
+             */
+        } else if (this.rep.length() > 1) {
+            this.rep = this.rep.substring(0, this.rep.length() - 1);
+            c = this.rep.charAt(this.rep.length());
+        }
+        return Character.getNumericValue(c);
     }
 
     @Override
     public final boolean isZero() {
 
-        // TODO - fill in body
-
-        // This line added just to make the component compilable.
-        return false;
+        // if the length of rep is 0, isZero will be true, and false otherwise
+        return this.rep.length() == 0;
     }
 
 }
