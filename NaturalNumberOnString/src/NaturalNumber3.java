@@ -55,7 +55,7 @@ public class NaturalNumber3 extends NaturalNumberSecondary {
     public NaturalNumber3(int i) {
         assert i >= 0 : "Violation of: i >= 0";
 
-        // TODO - fill in body
+        this.rep = Integer.toString(i);
 
     }
 
@@ -70,7 +70,7 @@ public class NaturalNumber3 extends NaturalNumberSecondary {
         assert s.matches("0|[1-9]\\d*") : ""
                 + "Violation of: there exists n: NATURAL (s = TO_STRING(n))";
 
-        // TODO - fill in body
+        this.rep = s;
 
     }
 
@@ -83,7 +83,7 @@ public class NaturalNumber3 extends NaturalNumberSecondary {
     public NaturalNumber3(NaturalNumber n) {
         assert n != null : "Violation of: n is not null";
 
-        // TODO - fill in body
+        this.rep = n.toString();
 
     }
 
@@ -130,8 +130,15 @@ public class NaturalNumber3 extends NaturalNumberSecondary {
         assert 0 <= k : "Violation of: 0 <= k";
         assert k < RADIX : "Violation of: k < 10";
 
-        // add the given integer to the end of the natural number
-        this.rep = this.rep.concat(Integer.toString(k));
+        // if the current rep is 0, clear it
+        if (this.rep != null) {
+            if (this.rep.equals("0")) {
+                this.rep = "";
+            }
+
+            // add the digit to the end of the rep
+            this.rep = this.rep.concat(Integer.toString(k));
+        }
 
     }
 
@@ -142,26 +149,36 @@ public class NaturalNumber3 extends NaturalNumberSecondary {
         char c = '0';
 
         // if the rep is only one digit, get that digit and take it out of rep
-        if (this.rep.length() == 1) {
-            c = this.rep.charAt(0);
-            this.rep = "";
+        if (this.rep != null) {
+            if (this.rep.length() == 1) {
+                c = this.rep.charAt(0);
+                this.rep = "";
 
-            /*
-             * If rep has multiple digits, make rep a substring of all but the
-             * last digit, and make c the last digit.
-             */
-        } else if (this.rep.length() > 1) {
-            this.rep = this.rep.substring(0, this.rep.length() - 1);
-            c = this.rep.charAt(this.rep.length());
+                /*
+                 * If rep has multiple digits, make rep a substring of all but
+                 * the last digit, and make c the last digit of the original
+                 * string.
+                 */
+            } else if (this.rep.length() > 1) {
+                c = this.rep.charAt(this.rep.length() - 1);
+                this.rep = this.rep.substring(0, this.rep.length() - 1);
+            }
         }
+        // convert the character into an int and return it
         return Character.getNumericValue(c);
+
     }
 
     @Override
     public final boolean isZero() {
 
-        // if the length of rep is 0, isZero will be true, and false otherwise
-        return this.rep.length() == 0;
+        // if rep is 0, clear it
+        if (this.rep.equals("0")) {
+            this.rep = "";
+        }
+
+        // if there is nothing in rep, it is 0. Otherwise isZero will return false
+        return this.rep.isEmpty();
     }
 
 }
