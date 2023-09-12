@@ -665,7 +665,7 @@ public abstract class NaturalNumberTest {
          * Set up variables and call method under test
          */
         NaturalNumber n = this.constructorTest(123456789);
-        NaturalNumber nExpected = this.constructorRef(123456789);
+        NaturalNumber nExpected = this.constructorRef(12345678);
         int remainder = n.divideBy10();
         /*
          * Assert that values of variables match expectations

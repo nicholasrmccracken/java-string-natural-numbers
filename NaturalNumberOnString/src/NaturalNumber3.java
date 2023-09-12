@@ -55,8 +55,11 @@ public class NaturalNumber3 extends NaturalNumberSecondary {
     public NaturalNumber3(int i) {
         assert i >= 0 : "Violation of: i >= 0";
 
-        // TODO - fill in body
+        this.createNewRep();
 
+        if (i != 0) {
+            this.rep = Integer.toString(i);
+        }
     }
 
     /**
@@ -70,8 +73,11 @@ public class NaturalNumber3 extends NaturalNumberSecondary {
         assert s.matches("0|[1-9]\\d*") : ""
                 + "Violation of: there exists n: NATURAL (s = TO_STRING(n))";
 
-        // TODO - fill in body
+        this.createNewRep();
 
+        if (!s.equals("0")) {
+            this.rep = s;
+        }
     }
 
     /**
@@ -83,8 +89,24 @@ public class NaturalNumber3 extends NaturalNumberSecondary {
     public NaturalNumber3(NaturalNumber n) {
         assert n != null : "Violation of: n is not null";
 
-        // TODO - fill in body
+        this.createNewRep();
 
+        String digits = "";
+
+        while (!n.isZero()) {
+            digits += Integer.toString(n.divideBy10());
+        }
+
+        for (int i = digits.length() - 1; i >= 0; i--) {
+            n.multiplyBy10(Integer.parseInt(String.valueOf(digits.charAt(i))));
+            this.rep += digits.charAt(i);
+        }
+
+//        this.createNewRep();
+//
+//        if (!n.isZero()) {
+//            this.rep = n.toString();
+//        }
     }
 
     /*
@@ -130,26 +152,28 @@ public class NaturalNumber3 extends NaturalNumberSecondary {
         assert 0 <= k : "Violation of: 0 <= k";
         assert k < RADIX : "Violation of: k < 10";
 
-        // TODO - fill in body
-
+        if (!this.rep.equals("") || k != 0) {
+            this.rep += Integer.toString(k);
+        }
     }
 
     @Override
     public final int divideBy10() {
 
-        // TODO - fill in body
+        int remainder = 0;
 
-        // This line added just to make the component compilable.
-        return 0;
+        if (!this.rep.equals("")) {
+            remainder = Integer
+                    .parseInt(this.rep.substring(this.rep.length() - 1));
+            this.rep = this.rep.substring(0, this.rep.length() - 1);
+        }
+
+        return remainder;
     }
 
     @Override
     public final boolean isZero() {
-
-        // TODO - fill in body
-
-        // This line added just to make the component compilable.
-        return false;
+        return this.rep.length() == 0;
     }
 
 }
