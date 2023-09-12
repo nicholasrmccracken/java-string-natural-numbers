@@ -57,6 +57,7 @@ public class NaturalNumber3 extends NaturalNumberSecondary {
 
         this.createNewRep();
 
+        // if i is 0, keep the rep empty. Else, make rep the string version of i.
         if (i != 0) {
             this.rep = Integer.toString(i);
         }
@@ -75,6 +76,7 @@ public class NaturalNumber3 extends NaturalNumberSecondary {
 
         this.createNewRep();
 
+        // if string is 0, keep rep empty. Else, make rep the same string as s.
         if (!s.equals("0")) {
             this.rep = s;
         }
@@ -91,6 +93,10 @@ public class NaturalNumber3 extends NaturalNumberSecondary {
 
         this.createNewRep();
 
+        /*
+         * if n is 0, keep rep empty. Else, convert n to a string and make it
+         * the rep.
+         */
         if (!n.isZero()) {
             this.rep = n.toString();
         }
