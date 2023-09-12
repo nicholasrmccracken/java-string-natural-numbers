@@ -91,22 +91,9 @@ public class NaturalNumber3 extends NaturalNumberSecondary {
 
         this.createNewRep();
 
-        String digits = "";
-
-        while (!n.isZero()) {
-            digits += Integer.toString(n.divideBy10());
+        if (!n.isZero()) {
+            this.rep = n.toString();
         }
-
-        for (int i = digits.length() - 1; i >= 0; i--) {
-            n.multiplyBy10(Integer.parseInt(String.valueOf(digits.charAt(i))));
-            this.rep += digits.charAt(i);
-        }
-
-//        this.createNewRep();
-//
-//        if (!n.isZero()) {
-//            this.rep = n.toString();
-//        }
     }
 
     /*
