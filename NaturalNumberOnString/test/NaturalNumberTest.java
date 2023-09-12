@@ -103,8 +103,6 @@ public abstract class NaturalNumberTest {
      */
     protected abstract NaturalNumber constructorRef(NaturalNumber n);
 
-    // TODO - add test cases for four constructors, multiplyBy10, divideBy10, isZero
-
     /*
      * Test cases for constructors
      */

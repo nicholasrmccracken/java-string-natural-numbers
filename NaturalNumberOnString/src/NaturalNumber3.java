@@ -139,6 +139,10 @@ public class NaturalNumber3 extends NaturalNumberSecondary {
         assert 0 <= k : "Violation of: 0 <= k";
         assert k < RADIX : "Violation of: k < 10";
 
+        /*
+         * Append integer k to end of string as new digit if the string
+         * representation is not empty or k is non-zero.
+         */
         if (!this.rep.equals("") || k != 0) {
             this.rep += Integer.toString(k);
         }
@@ -147,8 +151,18 @@ public class NaturalNumber3 extends NaturalNumberSecondary {
     @Override
     public final int divideBy10() {
 
+        /*
+         * Initialize remainder as 0 in case natural number string
+         * representation is empty, and therefore will return a remainder of 0
+         * when divided by 10.
+         */
         int remainder = 0;
 
+        /*
+         * If natural number is not zero then set it's last digit to be the
+         * remainder and remove the last digit from the concrete string
+         * representation.
+         */
         if (!this.rep.equals("")) {
             remainder = Integer
                     .parseInt(this.rep.substring(this.rep.length() - 1));
@@ -160,6 +174,10 @@ public class NaturalNumber3 extends NaturalNumberSecondary {
 
     @Override
     public final boolean isZero() {
+        /*
+         * If concrete string representation is empty, it represents 0 so return
+         * true.
+         */
         return this.rep.length() == 0;
     }
 
